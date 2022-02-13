@@ -1,4 +1,8 @@
 import main.java.*;
+import main.java.Bear;
+import main.java.BearWorkshop;
+import main.java.Clothing;
+import main.java.Stuffing;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -59,19 +63,15 @@ public class GivenBlackBox {
 
     @Before
     public void setUp() throws Exception {
-        
+
     }
 
     @After
     public void tearDown() throws Exception {
+
     }
 
-    // sample test
-
-    /**
-     * Test examines a BearFactory with 1 simple bear in it. The bear costs $30
-     * and there are no savings.
-     */
+    /*
     @Test
     public void oneBearNoSavings() {
     	// One Bear base stuffing, no saving expected
@@ -89,8 +89,6 @@ public class GivenBlackBox {
         assertEquals(oneBearExpected, ans);
     }
 
-
-    // sample test
     @Test
     public void threeBearsSaveOnCheapest() {
     	 // Three Bears expected to not pay for cheapest one
@@ -108,9 +106,6 @@ public class GivenBlackBox {
         Double ans = threeBears.calculateSavings();
         assertEquals(threeBearsExpected, ans);
     }
-
-    // sample test
- 
     @Test
     public void oneBearTest3clothings() {
         BearWorkshop bears = null;
@@ -130,5 +125,75 @@ public class GivenBlackBox {
         Double ans = bears.calculateSavings();
         assertEquals(bearsExpected, ans, 0.005);
     }
-    
+    */
+
+    /**
+     * Test #1
+     * Put as many hats as I could come up with on the bear.
+     */
+    @Test
+    public void test1() {
+        BearWorkshop workshop = null;
+        try {
+            workshop = createBearWorkshop("AZ");
+        } catch(Exception exception) {
+            exception.printStackTrace();
+        }
+        Bear bear1 = new Bear(Stuffing.stuffing.BASE);
+        workshop.addBear(bear1);
+
+        bear1.clothing.add(new Clothing(5, "Cowboy Hat"));
+        bear1.clothing.add(new Clothing(5, "Fedora Hat"));
+        bear1.clothing.add(new Clothing(5, "Baseball Hat"));
+        bear1.clothing.add(new Clothing(5, "Straw Hat"));
+        bear1.clothing.add(new Clothing(5, "Top Hat"));
+        bear1.clothing.add(new Clothing(5, "Yellow Hat"));
+        bear1.clothing.add(new Clothing(5, "Tall Hat"));
+        bear1.clothing.add(new Clothing(5, "Upside-down Hat"));
+        bear1.clothing.add(new Clothing(5, "Yankee with no brim Hat"));
+        bear1.clothing.add(new Clothing(5, "Flower Hat"));
+        bear1.clothing.add(new Clothing(5, "Hypercube Hat"));
+        bear1.clothing.add(new Clothing(5, "Gentlemen's Hat"));
+        bear1.clothing.add(new Clothing(5, "Invisible Hat"));
+        bear1.clothing.add(new Clothing(5, "Old Hat"));
+
+        assertEquals(28.1, workshop.calculateSavings(), 0.005);
+    }
+
+    /**
+     * Test #2
+     * Test savings calculation with invalid inputs.
+     */
+    @Test
+    public void test2() {
+        BearWorkshop workshop = null;
+        try {
+            workshop = createBearWorkshop("AZ");
+        } catch(Exception exception) {
+            exception.printStackTrace();
+        }
+        Bear bear1 = new Bear(Stuffing.stuffing.BASE);
+        workshop.addBear(bear1);
+
+        bear1.clothing.add(new Clothing(-5, "Impossible hat"));
+        bear1.clothing.add(new Clothing(0, "\0"));
+
+        assertEquals(0, workshop.calculateSavings(), 0);
+    }
+
+    @Test
+    public void test3() {
+        BearWorkshop workshop = null;
+        try {
+            workshop = createBearWorkshop("AZ");
+        } catch(Exception exception) {
+            exception.printStackTrace();
+        }
+        Bear bear1 = new Bear(Stuffing.stuffing.BASE);
+        workshop.addBear(bear1);
+
+
+
+        assertEquals(0, workshop.calculateSavings(), 0);
+    }
 }
