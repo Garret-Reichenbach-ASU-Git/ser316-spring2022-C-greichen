@@ -2,6 +2,7 @@ import main.java.*;
 import main.java.Bear;
 import main.java.BearWorkshop;
 import main.java.Clothing;
+import main.java.NoiseMaker;
 import main.java.Stuffing;
 import org.junit.After;
 import org.junit.Before;
@@ -192,7 +193,8 @@ public class GivenBlackBox {
         Bear bear1 = new Bear(Stuffing.stuffing.BASE);
         workshop.addBear(bear1);
 
-
+        bear1.noisemakers.add(new NoiseMaker("Demonic Screeching", "unintelligible loud noises", NoiseMaker.Location.CENTERBODY));
+        bear1.noisemakers.add(new NoiseMaker("Horrible Yelling", "unintelligible loud noises", NoiseMaker.Location.CENTERBODY));
 
         assertEquals(0, workshop.calculateSavings(), 0);
     }
