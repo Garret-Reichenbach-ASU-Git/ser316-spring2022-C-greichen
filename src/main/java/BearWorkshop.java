@@ -3,11 +3,11 @@ package main.java;
 import java.util.*;
 
 // This class provides functionality for a BearWorkshop class.
-public class BearWorkshop implements BearWorkshopInterface{
+public class BearWorkshop implements main.java.BearWorkshopInterface {
     // Workshop has a collection of bears
     // Workshop has a customer
-    Customer customer;
-    List<Bear> BearCart;
+    main.java.Customer customer;
+    List<main.java.Bear> BearCart;
 
     /**
      * Default constructor for the Bear Workshop
@@ -22,7 +22,7 @@ public class BearWorkshop implements BearWorkshopInterface{
      */
     public BearWorkshop(String state) {
         BearCart = new LinkedList<>();
-        customer = new Customer(state);
+        customer = new main.java.Customer(state);
     }
 
     /**
@@ -34,56 +34,56 @@ public class BearWorkshop implements BearWorkshopInterface{
      * TODO: test me and fix me in assignment 3
      */
     @Override
-    public double getCost(Bear bear) {
-        Collections.sort(bear.clothing);
-        int numFree = bear.clothing.size() / 3;
-        ArrayList<Clothing> freeClothes = new ArrayList<>();
+    public double getCost(main.java.Bear bear) {
+        Collections.sort(bear.getClothing());
+        int numFree = bear.getClothing().size() / 3;
+        ArrayList<main.java.Clothing> freeClothes = new ArrayList<>();
 
-        for (int i = 0; i < bear.clothing.size(); i++) {
-            Clothing clothes = bear.clothing.get(i);
+        for (int i = 0; i < bear.getClothing().size(); i++) {
+            main.java.Clothing clothes = bear.getClothing().get(i);
             if (i < numFree) {
                 freeClothes.add(clothes);
             } else {
-                bear.price += clothes.price;
+                bear.setPrice(bear.getPrice() + clothes.price);
             }
         }
 
-        for (NoiseMaker noise: bear.noisemakers) {
-            bear.price += noise.price;
+        for (main.java.NoiseMaker noise: bear.getNoisemakers()) {
+            bear.setPrice(bear.getPrice() + noise.price);
         }
 
-        if (bear.ink != null) {
-            bear.price += bear.ink.price;
+        if (bear.getInk() != null) {
+            bear.setPrice(bear.getPrice() + bear.getInk().price);
         }
 
-        bear.price += bear.stuff.price;
-        bear.price += bear.casing.priceModifier;
+        bear.setPrice(bear.getPrice() + bear.getStuff().price);
+        bear.setPrice(bear.getPrice() + bear.getCasing().priceModifier);
 
-        return bear.price;
+        return bear.getPrice();
     }
 
     // Function to get the raw cost of a bear without any discounts
    // TODO: test me and fix me in assignment 3
-    public double getRawCost(Bear bear) {
-        for (int i = 0; i < bear.clothing.size(); i++) {
-            Clothing clothes = bear.clothing.get(i);
-            bear.price += clothes.price;
+    public double getRawCost(main.java.Bear bear) {
+        for (int i = 0; i < bear.getClothing().size(); i++) {
+            main.java.Clothing clothes = bear.getClothing().get(i);
+            bear.setPrice(bear.getPrice() + clothes.price);
 
         }
 
-        for (NoiseMaker noise: bear.noisemakers) {
-            bear.price += noise.price;
+        for (main.java.NoiseMaker noise: bear.getNoisemakers()) {
+            bear.setPrice(bear.getPrice() + noise.price);
         }
 
-        if (bear.ink != null) {
-            bear.price += bear.ink.price;
+        if (bear.getInk() != null) {
+            bear.setPrice(bear.getPrice() + bear.getInk().price);
         }
 
-        bear.price += bear.stuff.price;
-        bear.price += bear.casing.priceModifier;
+        bear.setPrice(bear.getPrice() + bear.getStuff().price);
+        bear.setPrice(bear.getPrice() + bear.getCasing().priceModifier);
 
-        double bearPrice = bear.price;
-        bear.price = 0;
+        double bearPrice = bear.getPrice();
+        bear.setPrice(0);
         return bearPrice;
     }
 
@@ -125,7 +125,7 @@ public class BearWorkshop implements BearWorkshopInterface{
      * TODO: test me and fix me in assignment 3
      */
     @Override
-    public boolean addBear(Bear bear)       {
+    public boolean addBear(main.java.Bear bear)       {
         if (this.BearCart.add(bear))        {
             return true;
                                             }
@@ -136,7 +136,7 @@ public class BearWorkshop implements BearWorkshopInterface{
 
     // Simple means to remove a bear from the shopping cart
     @Override
-    public boolean removeBear(Bear bear)    {
+    public boolean removeBear(main.java.Bear bear)    {
         if (this.BearCart.remove(bear))     {
             return true;
                                             }
@@ -154,16 +154,17 @@ public class BearWorkshop implements BearWorkshopInterface{
     @Override
     public double checkout() {
         if (this.customer.age <= 13) {
-            if (this.customer.parent.age < 18)
+            if (this.customer.parent.age < 18) {
                 System.out.println("Guardian is too young");
                 return -1;
+            }
         }
         double temp = 0;
-        Double Cost = Double.valueOf(0.00);
-        for (Bear bear: BearCart) {
+        double Cost = 0;
+        for (main.java.Bear bear: BearCart) {
             Cost = Cost + getRawCost(bear);
         }
-        for (Bear bear: this.BearCart) {
+        for (main.java.Bear bear: this.BearCart) {
             temp += getCost(bear);
         }
 
@@ -171,28 +172,28 @@ public class BearWorkshop implements BearWorkshopInterface{
         double savings = 0;
         // calculate total cost
         double rawCost = 0;
-        for (Bear bear: BearCart) {
+        for (main.java.Bear bear: BearCart) {
             rawCost += this.getRawCost(bear);
         }
 
         // calculate adjusted cost
         double cost = 0;
-        for (Bear bear: this.BearCart) {
+        for (main.java.Bear bear: this.BearCart) {
             cost += this.getCost(bear);
         }
         savings += rawCost - cost; // calc delta between raw and prorated cost
 
-        List<Bear> nonFreeBears = new LinkedList<>();
+        List<main.java.Bear> nonFreeBears = new LinkedList<>();
         int counter = 0;
         int numberOfFreeBearsInBearCart = BearCart.size() / 3;
         double discountedCost = 0;
-        Bear freeBear = null;
+        main.java.Bear freeBear = null;
 
         for (int count = 0; count <= numberOfFreeBearsInBearCart; ++count) {
-            for (Bear bear : BearCart) {
-                if (freeBear != null && bear.price < freeBear.price)
+            for (main.java.Bear bear : BearCart) {
+                if (freeBear != null && bear.getPrice() < freeBear.getPrice())
                     freeBear = bear;
-                    temp += temp - temp * 2 + bear.price;
+                    temp += temp - temp * 2 + bear.getPrice();
 
             }
         }
