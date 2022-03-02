@@ -31,34 +31,24 @@ public class BearWorkshop implements main.java.BearWorkshopInterface {
 	 * accessory discounts into account correctly.
 	 * @param bear to get cost of
 	 * @return double representation of bear cost
-	 * TODO: test me and fix me in assignment 3
 	 */
 	@Override
 	public double getCost(main.java.Bear bear) {
+		bear.setPrice(0);
+		double cost = getRawCost(bear);
 		Collections.sort(bear.getClothing());
 		int numFree = bear.getClothing().size() / 3;
-		ArrayList<main.java.Clothing> freeClothes = new ArrayList<>();
 
-		for (int i = 0; i < bear.getClothing().size(); i++) {
+		for(int i = bear.getClothing().size() - 1; i >= 0; i --) {
 			main.java.Clothing clothes = bear.getClothing().get(i);
-			if (i < numFree) {
-				freeClothes.add(clothes);
-			} else {
-				bear.setPrice(bear.getPrice() + clothes.price);
-			}
+			if(i <= bear.getClothing().size() - numFree - 1) bear.setPrice(bear.getPrice() + clothes.price);
 		}
-
-		for (main.java.NoiseMaker noise: bear.getNoisemakers()) {
-			bear.setPrice(bear.getPrice() + noise.price);
-		}
-
-		if (bear.getInk() != null) {
-			bear.setPrice(bear.getPrice() + bear.getInk().price);
-		}
+		for(main.java.NoiseMaker noiseMaker : bear.getNoisemakers()) bear.setPrice(bear.getPrice() + noiseMaker.price);
 
 		bear.setPrice(bear.getPrice() + bear.getStuff().price);
 		bear.setPrice(bear.getPrice() + bear.getCasing().priceModifier);
-
+		bear.setPrice(bear.getPrice() + bear.getInk().price);
+		if(cost > 70.0D) bear.setPrice(bear.getPrice() - bear.getInk().price);
 		return bear.getPrice();
 	}
 
@@ -209,38 +199,105 @@ public class BearWorkshop implements main.java.BearWorkshopInterface {
 	 */
 	public double calculateSavings() {
 		double savings = 0;
-		double rawCost = 0;
 		double cost = 0;
-
-		Collections.sort(BearCart);
-		HashMap<main.java.Bear, Boolean> bears = new HashMap<>();
-		ArrayList<main.java.Bear> tempList = new ArrayList<>();
+		double rawCost = 0;
 
 		for(main.java.Bear bear : BearCart) {
-			bears.remove(bear);
-			tempList.add(bear);
-			Collections.sort(tempList);
-			if(tempList.size() == 3) {
-				bears.remove(tempList.get(0));
-				bears.remove(tempList.get(1));
-				bears.remove(tempList.get(2));
-				bears.put(tempList.get(0), false);
-				bears.put(tempList.get(1), false);
-				bears.put(tempList.get(2), true);
-				tempList.clear();
-			} else bears.put(bear, false);
+			rawCost += getRawCost(bear);
+			bear.setPrice(0);
+			double temp = getRawCost(bear);
+			Collections.sort(bear.getClothing());
+			int numFree = bear.getClothing().size() / 3;
+
+			for(int i = bear.getClothing().size() - 1; i >= 0; i --) {
+				main.java.Clothing clothes = bear.getClothing().get(i);
+				if(i <= bear.getClothing().size() - numFree - 1) bear.setPrice(bear.getPrice() + clothes.price);
+			}
+			for(main.java.NoiseMaker noiseMaker : bear.getNoisemakers()) bear.setPrice(bear.getPrice() + noiseMaker.price);
+
+			bear.setPrice(bear.getPrice() + bear.getStuff().price);
+			bear.setPrice(bear.getPrice() + bear.getCasing().priceModifier);
+			bear.setPrice(bear.getPrice() + bear.getInk().price);
+			if(temp > 70.0D) bear.setPrice(bear.getPrice() - bear.getInk().price);
+			cost += bear.getPrice();
+			//cost += getCost(bear);
 		}
 
-		for(Map.Entry<main.java.Bear, Boolean> entry : bears.entrySet()) {
-			if(entry.getValue()) {
-				
-			} else {
-				rawCost += getRawCost(entry.getKey());
-				cost = getCost(entry.getKey());
+		savings += rawCost - cost;
+		Collections.sort(BearCart);
+		List<main.java.Bear> nonFreeBears = new LinkedList<>();
+		int counter = 0;
+		double discountedCost = 0.0D;
+
+		for(main.java.Bear bear : BearCart) {
+			if(counter % 3 == 0) {
+				bear.setPrice(0);
+				double temp = getRawCost(bear);
+				Collections.sort(bear.getClothing());
+				int numFree = bear.getClothing().size() / 3;
+
+				for(int i = bear.getClothing().size() - 1; i >= 0; i --) {
+					main.java.Clothing clothes = bear.getClothing().get(i);
+					if(i <= bear.getClothing().size() - numFree - 1) bear.setPrice(bear.getPrice() + clothes.price);
+				}
+				for(main.java.NoiseMaker noiseMaker : bear.getNoisemakers()) bear.setPrice(bear.getPrice() + noiseMaker.price);
+
+				bear.setPrice(bear.getPrice() + bear.getStuff().price);
+				bear.setPrice(bear.getPrice() + bear.getCasing().priceModifier);
+				bear.setPrice(bear.getPrice() + bear.getInk().price);
+				if(temp > 70.0D) bear.setPrice(bear.getPrice() - bear.getInk().price);
+				discountedCost -= bear.getPrice();
+				//discountedCost -= getCost(freeBear);
+			}
+
+			bear.setPrice(0);
+			double temp = getRawCost(bear);
+			Collections.sort(bear.getClothing());
+			int numFree = bear.getClothing().size() / 3;
+
+			for(int i = bear.getClothing().size() - 1; i >= 0; i --) {
+				main.java.Clothing clothes = bear.getClothing().get(i);
+				if(i <= bear.getClothing().size() - numFree - 1) bear.setPrice(bear.getPrice() + clothes.price);
+			}
+			for(main.java.NoiseMaker noiseMaker : bear.getNoisemakers()) bear.setPrice(bear.getPrice() + noiseMaker.price);
+
+			bear.setPrice(bear.getPrice() + bear.getStuff().price);
+			bear.setPrice(bear.getPrice() + bear.getCasing().priceModifier);
+			bear.setPrice(bear.getPrice() + bear.getInk().price);
+			if(temp > 70.0D) bear.setPrice(bear.getPrice() - bear.getInk().price);
+			discountedCost += bear.getPrice();
+			//discountedCost += getCost(bear);
+			nonFreeBears.add(bear);
+			counter ++;
+		}
+		savings += cost - discountedCost;
+		double accessorySavings = 0.0D;
+
+		for(main.java.Bear bear : nonFreeBears) {
+			int numOfFreeClothes = bear.getClothing().size() / 3;
+			int numOfAccessories = bear.getClothing().size() - numOfFreeClothes;
+			numOfAccessories += bear.getClothing().size();
+			if(numOfAccessories > 9) {
+				bear.setPrice(0);
+				double temp = getRawCost(bear);
+				Collections.sort(bear.getClothing());
+				int numFree = bear.getClothing().size() / 3;
+
+				for(int i = bear.getClothing().size() - 1; i >= 0; i --) {
+					main.java.Clothing clothes = bear.getClothing().get(i);
+					if(i <= bear.getClothing().size() - numFree - 1) bear.setPrice(bear.getPrice() + clothes.price);
+				}
+				for(main.java.NoiseMaker noiseMaker : bear.getNoisemakers()) bear.setPrice(bear.getPrice() + noiseMaker.price);
+
+				bear.setPrice(bear.getPrice() + bear.getStuff().price);
+				bear.setPrice(bear.getPrice() + bear.getCasing().priceModifier);
+				bear.setPrice(bear.getPrice() + bear.getInk().price);
+				if(temp > 70.0D) bear.setPrice(bear.getPrice() - bear.getInk().price);
+				accessorySavings += bear.getPrice() * 0.1;
+				//accessorySavings += getCost(bear) * 0.1;
 			}
 		}
-		savings += rawCost - cost;
 
-		return savings;
+		return accessorySavings + savings;
 	}
 }

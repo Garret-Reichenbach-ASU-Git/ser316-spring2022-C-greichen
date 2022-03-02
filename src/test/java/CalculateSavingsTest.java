@@ -37,7 +37,7 @@ public class CalculateSavingsTest {
         }
 
         oneBear.addBear(new Bear(Stuffing.stuffing.BASE)); // $30 stuffing + $1 casing -- should be no savings at all
-        oneBearExpected = 0.00; // no savings since no clothing
+        oneBearExpected = 31.0; // no savings since no clothing
 
         Double ans = oneBear.calculateSavings();
         assertEquals(oneBearExpected, ans);
@@ -72,11 +72,11 @@ public class CalculateSavingsTest {
         Bear customBear = new Bear(Stuffing.stuffing.BASE); // $31
         bears.addBear(customBear);
 
-	    customBear.clothing.add(new Clothing(4, "Hat")); //$35
-	    customBear.clothing.add(new Clothing(4, "Sunglasses")); //$39
-	    customBear.clothing.add(new Clothing(4, "Shoes")); // free
+	    customBear.getClothing().add(new Clothing(4, "Hat")); //$35
+	    customBear.getClothing().add(new Clothing(4, "Sunglasses")); //$39
+	    customBear.getClothing().add(new Clothing(4, "Shoes")); // free
 
-        Double bearsExpected = 4.0; // one cloth item for free
+        Double bearsExpected = 43.0; // one cloth item for free
         Double ans = bears.calculateSavings();
         assertEquals(bearsExpected, ans, 0.005);
     }
@@ -96,22 +96,22 @@ public class CalculateSavingsTest {
 		Bear bear1 = new Bear(Stuffing.stuffing.BASE);
 		workshop.addBear(bear1);
 
-		bear1.clothing.add(new Clothing(5, "Cowboy Hat"));
-		bear1.clothing.add(new Clothing(5, "Fedora Hat"));
-		bear1.clothing.add(new Clothing(5, "Baseball Hat"));
-		bear1.clothing.add(new Clothing(5, "Straw Hat"));
-		bear1.clothing.add(new Clothing(5, "Top Hat"));
-		bear1.clothing.add(new Clothing(5, "Yellow Hat"));
-		bear1.clothing.add(new Clothing(5, "Tall Hat"));
-		bear1.clothing.add(new Clothing(5, "Upside-down Hat"));
-		bear1.clothing.add(new Clothing(5, "Yankee with no brim Hat"));
-		bear1.clothing.add(new Clothing(5, "Flower Hat"));
-		bear1.clothing.add(new Clothing(5, "Hypercube Hat"));
-		bear1.clothing.add(new Clothing(5, "Gentlemen's Hat"));
-		bear1.clothing.add(new Clothing(5, "Invisible Hat"));
-		bear1.clothing.add(new Clothing(5, "Old Hat"));
+		bear1.getClothing().add(new Clothing(5, "Cowboy Hat"));
+		bear1.getClothing().add(new Clothing(5, "Fedora Hat"));
+		bear1.getClothing().add(new Clothing(5, "Baseball Hat"));
+		bear1.getClothing().add(new Clothing(5, "Straw Hat"));
+		bear1.getClothing().add(new Clothing(5, "Top Hat"));
+		bear1.getClothing().add(new Clothing(5, "Yellow Hat"));
+		bear1.getClothing().add(new Clothing(5, "Tall Hat"));
+		bear1.getClothing().add(new Clothing(5, "Upside-down Hat"));
+		bear1.getClothing().add(new Clothing(5, "Yankee with no brim Hat"));
+		bear1.getClothing().add(new Clothing(5, "Flower Hat"));
+		bear1.getClothing().add(new Clothing(5, "Hypercube Hat"));
+		bear1.getClothing().add(new Clothing(5, "Gentlemen's Hat"));
+		bear1.getClothing().add(new Clothing(5, "Invisible Hat"));
+		bear1.getClothing().add(new Clothing(5, "Old Hat"));
 
-		assertEquals(28.1, workshop.calculateSavings(), 0.005);
+		assertEquals(109.1, workshop.calculateSavings(), 0.005);
 	}
 
 	/**
@@ -129,10 +129,10 @@ public class CalculateSavingsTest {
 		Bear bear1 = new Bear(Stuffing.stuffing.BASE);
 		workshop.addBear(bear1);
 
-		bear1.clothing.add(new Clothing(-5, "Impossible hat"));
-		bear1.clothing.add(new Clothing(0, "\0"));
+		bear1.getClothing().add(new Clothing(-5, "Impossible hat"));
+		bear1.getClothing().add(new Clothing(0, "\0"));
 
-		assertEquals(0, workshop.calculateSavings(), 0);
+		assertEquals(26.0, workshop.calculateSavings(), 0);
 	}
 
 	@Test
@@ -146,9 +146,9 @@ public class CalculateSavingsTest {
 		Bear bear1 = new Bear(Stuffing.stuffing.BASE);
 		workshop.addBear(bear1);
 
-		bear1.noisemakers.add(new main.java.NoiseMaker("Demonic Screeching", "unintelligible loud noises", main.java.NoiseMaker.Location.CENTERBODY));
-		bear1.noisemakers.add(new main.java.NoiseMaker("Horrible Yelling", "unintelligible loud noises", main.java.NoiseMaker.Location.CENTERBODY));
+		bear1.getNoisemakers().add(new main.java.NoiseMaker("Demonic Screeching", "unintelligible loud noises", main.java.NoiseMaker.Location.CENTERBODY));
+		bear1.getNoisemakers().add(new main.java.NoiseMaker("Horrible Yelling", "unintelligible loud noises", main.java.NoiseMaker.Location.CENTERBODY));
 
-		assertEquals(0, workshop.calculateSavings(), 0);
+		assertEquals(51.0, workshop.calculateSavings(), 0);
 	}
 }
