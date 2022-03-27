@@ -216,16 +216,17 @@ public class BearWorkshop implements main.java.BearWorkshopInterface {
 	 * Since all clothing is the same priece the bear with only 2 paid clothing items is cheapest. So we will get that bear for free. We will only have to pay for 2 bears, with 3 clothing items each.
 	 * @return the savings if the customer would check with the current bears in the workshop out as double
 	 */
-	/*
 	public double calculateSavings() {
 		double savings = 0;
 		double cost = 0;
 		double rawCost = 0;
 
+		int bearCounter = 0;
 		for(main.java.Bear bear : BearCart) {
 			rawCost += getRawCost(bear);
 			bear.setPrice(0);
 			double temp = getRawCost(bear);
+
 			Collections.sort(bear.clothing);
 			int numFree = bear.clothing.size() / 3;
 
@@ -240,7 +241,6 @@ public class BearWorkshop implements main.java.BearWorkshopInterface {
 			bear.setPrice(bear.price + bear.ink.price);
 			if(temp > 70.0D) bear.setPrice(bear.price - bear.ink.price);
 			cost += bear.price;
-			//cost += getCost(bear);
 		}
 
 		savings += rawCost - cost;
@@ -267,7 +267,6 @@ public class BearWorkshop implements main.java.BearWorkshopInterface {
 				bear.setPrice(bear.price + bear.ink.price);
 				if(temp > 70.0D) bear.setPrice(bear.price - bear.ink.price);
 				discountedCost -= bear.price;
-				//discountedCost -= getCost(freeBear);
 			}
 
 			bear.setPrice(0);
@@ -286,7 +285,6 @@ public class BearWorkshop implements main.java.BearWorkshopInterface {
 			bear.setPrice(bear.price + bear.ink.price);
 			if(temp > 70.0D) bear.setPrice(bear.price - bear.ink.price);
 			discountedCost += bear.price;
-			//discountedCost += getCost(bear);
 			nonFreeBears.add(bear);
 			counter ++;
 		}
@@ -314,11 +312,23 @@ public class BearWorkshop implements main.java.BearWorkshopInterface {
 				bear.setPrice(bear.price + bear.ink.price);
 				if(temp > 70.0D) bear.setPrice(bear.price - bear.ink.price);
 				accessorySavings += bear.price * 0.1;
-				//accessorySavings += getCost(bear) * 0.1;
 			}
+			bearCounter ++;
+			logDebug("Bear #" + bearCounter + " | Stuffing Price = " + bear.stuff.price + " | Casing Price = " + bear.casing.priceModifier + " | Ink Price = " + bear.ink.price + " | Total Price = " + bear.price);
 		}
 
 		return accessorySavings + savings;
 	}
-	 */
+
+	public static final boolean DEBUG_MODE = true;
+
+	private void logDebug(String message) {
+		if(DEBUG_MODE) {
+			String[] lines = message.split("\n");
+			for(int i = 0; i < lines.length; i ++) {
+				if(i == 0) System.out.println("[DEBUG]: " + lines[i]);
+				else System.out.println("         " + lines[i]);
+			}
+		}
+	}
 }
