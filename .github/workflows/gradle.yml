@@ -9,7 +9,12 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ main ]
+    branches:
+    - main
+    - WhiteBox
+    - BlackBox
+    - Static Analysis
+    - Review
   pull_request:
     branches: [ main ]
 
