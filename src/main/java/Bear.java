@@ -1,6 +1,7 @@
 import java.util.LinkedList;
 
-public class Bear implements Comparable<Bear>{
+public class Bear implements Comparable<Bear> {
+
     public Casing casing;
     public Stuffing stuff;
     public Embroidery ink;
@@ -11,7 +12,6 @@ public class Bear implements Comparable<Bear>{
     // bear has stuffing (req)
     // bear has a tattoo/emroider or not (opt)
     // bear has a noisemaker (opt)
-
 
     public Bear() {
         this.casing = new Casing();
@@ -39,7 +39,7 @@ public class Bear implements Comparable<Bear>{
         if (this.noisemakers.size() >= 5) {
             return false;
         } else {
-            for (NoiseMaker noisemaker: noisemakers) {
+            for (NoiseMaker noisemaker : noisemakers) {
                 if (noise.spot == noisemaker.spot) {
                     return false;
                 }

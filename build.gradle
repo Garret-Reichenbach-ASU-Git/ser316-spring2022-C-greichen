@@ -30,7 +30,6 @@ test {
 /////////////////////////////////////////////////////////////////////
 apply plugin: 'checkstyle'
 checkstyle {
-//   // Keep checkstyle a little quieter
     ignoreFailures = true
     showViolations = false
 }
@@ -50,15 +49,15 @@ checkstyle {
 // Configure SpotBugs
 ///////////////////////////////////////////////////////////////////////
 // To generate an HTML report instead of XML
-// spotbugsMain {
-//     reports {
-//         xml.enabled = false
-//         html.enabled = true
-//     }
-// }
-// spotbugs {
-//     toolVersion = '4.0.0-beta4'
-//     ignoreFailures = true
-//     showProgress = true
-//     effort = 'max'
-// }
+spotbugsMain {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+spotbugs {
+    toolVersion = '4.0.0-beta4'
+    ignoreFailures = true
+    showProgress = true
+    effort = 'max'
+}
