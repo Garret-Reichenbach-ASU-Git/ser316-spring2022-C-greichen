@@ -1,26 +1,26 @@
 public class Stuffing {
-    public enum stuffing {
+    public enum StuffingType {
         BASE,
         DOWN,
         FOAM
     }
 
-    stuffing polyStuffing;
+    StuffingType polyStuffingType;
     int price;
 
-    public Stuffing (stuffing interiorStuffing) {
+    public Stuffing (StuffingType interiorStuffingType) {
 
-        switch (interiorStuffing) {
+        switch (interiorStuffingType) {
             case BASE:
-                this.polyStuffing = stuffing.BASE;
+                this.polyStuffingType = StuffingType.BASE;
                 this.price = 30;
                 break;
             case DOWN:
-                this.polyStuffing = stuffing.DOWN;
+                this.polyStuffingType = StuffingType.DOWN;
                 this.price = 40;
                 break;
             case FOAM:
-                this.polyStuffing = stuffing.FOAM;
+                this.polyStuffingType = StuffingType.FOAM;
                 this.price = 50;
                 break;
         }

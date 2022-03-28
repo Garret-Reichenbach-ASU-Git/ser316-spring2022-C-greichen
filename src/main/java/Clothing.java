@@ -1,6 +1,6 @@
 public class Clothing implements Comparable<Clothing> {
     public double price;
-    public String Description;
+    public String description;
 
     //  you can assume that the price of $4 per clothing item is correct
     public Clothing() {
@@ -10,16 +10,10 @@ public class Clothing implements Comparable<Clothing> {
 
     public Clothing(double price, String descr) {
         this.price = price;
-        this.Description = descr;
+        this.description = descr;
     }
 
     public int compareTo(Clothing clothes) {
-        if (clothes.price > this.price) {
-            return 1;
-        } else if (clothes.price < this.price) {
-            return -1;
-        } else {
-            return 0;
-        }
+        return Double.compare(clothes.price, this.price);
     }
 }

@@ -9,20 +9,20 @@ public class Bear implements Comparable<Bear> {
     public LinkedList<Clothing> clothing; // accessory
     public double price;
     // bear has a shell (requ)
-    // bear has stuffing (req)
+    // bear has StuffingType (req)
     // bear has a tattoo/emroider or not (opt)
     // bear has a noisemaker (opt)
 
     public Bear() {
         this.casing = new Casing();
-        this.stuff = new Stuffing(Stuffing.stuffing.BASE);
+        this.stuff = new Stuffing(Stuffing.StuffingType.BASE);
         noisemakers = new LinkedList<>();
         clothing = new LinkedList<>();
         ink = new Embroidery("");
         price = 0;
     }
 
-    public Bear(Stuffing.stuffing stuff) {
+    public Bear(Stuffing.StuffingType stuff) {
         this.casing = new Casing();
         this.stuff = new Stuffing(stuff);
         noisemakers = new LinkedList<>();
@@ -51,6 +51,6 @@ public class Bear implements Comparable<Bear> {
 
     @Override
     public int compareTo(Bear bear) {
-        return new Double(this.price).compareTo(bear.price);
+        return Double.compare(this.price, bear.price);
     }
 }

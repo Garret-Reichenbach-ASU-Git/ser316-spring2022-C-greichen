@@ -1,5 +1,5 @@
 public class Embroidery {
-    final double pricePerLetter = 1.00;
+    final static double pricePerLetter = 1.00;
     double price;
     String embroidText;
 
