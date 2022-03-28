@@ -17,8 +17,12 @@ repositories {
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
-    compile "junit:junit:4.12"
-    compile files('cls/')
+    implementation("junit:junit:4.12")
+    implementation(files('cls/'))
+}
+
+test {
+    exclude '**/GivenBlackBox.class'
 }
 
 ///////////////////////////////////////////////////////////////////////
