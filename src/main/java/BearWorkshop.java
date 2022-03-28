@@ -1,8 +1,3 @@
-import main.java.BearWorkshopInterface;
-import main.java.Clothing;
-import main.java.Customer;
-import main.java.NoiseMaker;
-
 import java.util.*;
 
 // This class provides functionality for a BearWorkshop class.
