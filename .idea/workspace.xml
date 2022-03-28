@@ -5,8 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a227da7c-c833-436f-b48e-5963fd7c7659" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BearWorkshop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BearWorkshop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BearWorkshopInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BearWorkshopInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Casing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Casing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Clothing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clothing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Embroidery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Embroidery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/NoiseMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NoiseMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Stuffing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Stuffing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/GivenBlackBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GivenBlackBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/GivenWhiteBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GivenWhiteBox.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

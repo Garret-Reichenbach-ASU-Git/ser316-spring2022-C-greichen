@@ -1,12 +1,9 @@
-package main.java;
-
-import main.java.Stuffing.stuffing;
 import java.util.LinkedList;
 
 public class Bear implements Comparable<Bear>{
     public Casing casing;
     public Stuffing stuff;
-    public Embroidery ink; 
+    public Embroidery ink;
     public LinkedList<NoiseMaker> noisemakers; // accessory
     public LinkedList<Clothing> clothing; // accessory
     public double price;
@@ -18,14 +15,14 @@ public class Bear implements Comparable<Bear>{
 
     public Bear() {
         this.casing = new Casing();
-        this.stuff = new Stuffing(stuffing.BASE);
+        this.stuff = new Stuffing(Stuffing.stuffing.BASE);
         noisemakers = new LinkedList<>();
         clothing = new LinkedList<>();
         ink = new Embroidery("");
         price = 0;
     }
 
-    public Bear(stuffing stuff) {
+    public Bear(Stuffing.stuffing stuff) {
         this.casing = new Casing();
         this.stuff = new Stuffing(stuff);
         noisemakers = new LinkedList<>();

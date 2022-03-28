@@ -1,5 +1,3 @@
-package main.java;
-
 public class Stuffing {
     public enum stuffing {
         BASE,
