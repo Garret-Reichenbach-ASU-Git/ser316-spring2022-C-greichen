@@ -1,4 +1,3 @@
-import main.java.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,8 +8,6 @@ import org.junit.runners.Parameterized.Parameters;
 import java.lang.reflect.Constructor;
 import java.util.Arrays;
 import java.util.Collection;
-
-//import main.java.BearWorkshop;
 
 import static org.junit.Assert.*;
 
@@ -31,11 +28,11 @@ public class GivenBlackBox {
     @Parameters
     public static Collection<Object[]> courseGradesUnderTest() {
         Object[][] classes = {
-                {BearWorkshop1.class},
-                {BearWorkshop2.class},
-                {BearWorkshop3.class},
-                {BearWorkshop4.class},
-                {BearWorkshop5.class}
+                {main.java.BearWorkshop1.class},
+                {main.java.BearWorkshop2.class},
+                {main.java.BearWorkshop3.class},
+                {main.java.BearWorkshop4.class},
+                {main.java.BearWorkshop5.class}
 
         };
         return Arrays.asList(classes);

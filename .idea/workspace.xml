@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a227da7c-c833-436f-b48e-5963fd7c7659" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BearWorkshop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BearWorkshop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/GivenBlackBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GivenBlackBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/GivenWhiteBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GivenWhiteBox.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +90,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\garre\OneDrive - Arizona State University\Semester 6\SER-316\Assignments\Assignment 2\ser316-spring2022-C-greichen\cls" />
       <recent name="C:\Users\garre\OneDrive - Arizona State University\Semester 6\SER-316\Assignments\Assignment 2\gradle\wrapper" />
     </key>
   </component>
