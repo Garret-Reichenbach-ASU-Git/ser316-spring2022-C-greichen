@@ -1,7 +1,3 @@
-import main.java.Bear;
-import main.java.BearWorkshop;
-import main.java.Clothing;
-import main.java.Stuffing;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
@@ -146,8 +142,8 @@ public class CalculateSavingsTest {
 		Bear bear1 = new Bear(Stuffing.stuffing.BASE);
 		workshop.addBear(bear1);
 
-		bear1.noisemakers.add(new main.java.NoiseMaker("Demonic Screeching", "unintelligible loud noises", main.java.NoiseMaker.Location.CENTERBODY));
-		bear1.noisemakers.add(new main.java.NoiseMaker("Horrible Yelling", "unintelligible loud noises", main.java.NoiseMaker.Location.CENTERBODY));
+		bear1.noisemakers.add(new NoiseMaker("Demonic Screeching", "unintelligible loud noises", NoiseMaker.Location.CENTERBODY));
+		bear1.noisemakers.add(new NoiseMaker("Horrible Yelling", "unintelligible loud noises", NoiseMaker.Location.CENTERBODY));
 
 		assertEquals(51.0, workshop.calculateSavings(), 0);
 	}
