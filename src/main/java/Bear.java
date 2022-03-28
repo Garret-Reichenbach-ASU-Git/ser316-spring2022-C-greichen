@@ -1,14 +1,11 @@
-package main.java;
-
-import main.java.Stuffing.stuffing;
 import java.util.LinkedList;
 
 public class Bear implements Comparable<Bear>{
-    public main.java.Casing casing;
-    public main.java.Stuffing stuff;
-    public main.java.Embroidery ink;
-    public LinkedList<main.java.NoiseMaker> noisemakers; // accessory
-    public LinkedList<main.java.Clothing> clothing; // accessory
+    public Casing casing;
+    public Stuffing stuff;
+    public Embroidery ink;
+    public LinkedList<NoiseMaker> noisemakers; // accessory
+    public LinkedList<Clothing> clothing; // accessory
     public double price;
     // bear has a shell (requ)
     // bear has stuffing (req)
@@ -17,20 +14,20 @@ public class Bear implements Comparable<Bear>{
 
 
     public Bear() {
-        this.casing = new main.java.Casing();
-        this.stuff = new main.java.Stuffing(stuffing.BASE);
+        this.casing = new Casing();
+        this.stuff = new Stuffing(Stuffing.stuffing.BASE);
         noisemakers = new LinkedList<>();
         clothing = new LinkedList<>();
-        ink = new main.java.Embroidery("");
+        ink = new Embroidery("");
         price = 0;
     }
 
-    public Bear(stuffing stuff) {
-        this.casing = new main.java.Casing();
-        this.stuff = new main.java.Stuffing(stuff);
+    public Bear(Stuffing.stuffing stuff) {
+        this.casing = new Casing();
+        this.stuff = new Stuffing(stuff);
         noisemakers = new LinkedList<>();
         clothing = new LinkedList<>();
-        ink = new main.java.Embroidery("");
+        ink = new Embroidery("");
         price = 0;
     }
 
@@ -38,11 +35,11 @@ public class Bear implements Comparable<Bear>{
         this.price = incomingPrice;
     }
 
-    public boolean addNoise(main.java.NoiseMaker noise) {
+    public boolean addNoise(NoiseMaker noise) {
         if (this.noisemakers.size() >= 5) {
             return false;
         } else {
-            for (main.java.NoiseMaker noisemaker: noisemakers) {
+            for (NoiseMaker noisemaker: noisemakers) {
                 if (noise.spot == noisemaker.spot) {
                     return false;
                 }

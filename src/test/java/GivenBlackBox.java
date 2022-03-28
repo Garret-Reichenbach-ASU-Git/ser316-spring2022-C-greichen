@@ -1,9 +1,4 @@
 import main.java.*;
-import main.java.Bear;
-import main.java.BearWorkshop;
-import main.java.Clothing;
-import main.java.NoiseMaker;
-import main.java.Stuffing;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,8 +9,6 @@ import org.junit.runners.Parameterized.Parameters;
 import java.lang.reflect.Constructor;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 //import main.java.BearWorkshop;
 

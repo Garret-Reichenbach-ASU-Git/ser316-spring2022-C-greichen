@@ -1,5 +1,3 @@
-package main.java;
-
 public interface BearWorkshopInterface {
     
     public double getCost(Bear bear);

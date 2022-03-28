@@ -1,5 +1,3 @@
-package main.java;
-
 public class Clothing implements Comparable<Clothing> {
     public double price;
     public String Description;
